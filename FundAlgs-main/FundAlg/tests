@@ -1,0 +1,384 @@
+Задание 1
+
+Флаг -h (натуральные числа до 100, кратные x)
+
+$ ./prog1.out 7 -h
+→ 7
+→ 14
+→ 21
+→ 28
+→ 35
+→ 42
+→ 49
+→ 56
+→ 63
+→ 70
+→ 77
+→ 84
+→ 91
+→ 98
+
+$ ./prog1.out 1 -h
+→ 1 2 3 4 ... 100 (все числа от 1 до 100, каждое на строке)
+
+$ ./prog1.out 100 -h
+→ 100
+
+$ ./prog1.out 101 -h
+→ No such numbers
+
+$ ./prog1.out 0 -h
+→ Error: number out of range for this flag
+
+$ ./prog1.out -5 -h
+→ Error: number out of range for this flag
+
+--- Флаг -p (простота) ---
+
+$ ./prog1.out 2 -p
+→ Prime number
+
+$ ./prog1.out 3 -p
+→ Prime number
+
+$ ./prog1.out 4 -p
+→ Composite number
+
+$ ./prog1.out 100 -p
+→ Composite number
+
+$ ./prog1.out 1 -p
+→ Neither prime nor composite
+
+$ ./prog1.out 0 -p
+→ Neither prime nor composite
+
+$ ./prog1.out -5 -p
+→ Error: number out of range for this flag
+
+Флаг -s (hex-цифры числа)
+
+$ ./prog1.out 255 -s
+→ F F
+
+$ ./prog1.out 0 -s
+→ 0
+
+$ ./prog1.out 16 -s
+→ 1 0
+
+$ ./prog1.out 4095 -s
+→ F F F
+
+$ ./prog1.out -255 -s
+→ - F F
+
+$ ./prog1.out /255 -s
+→ F F
+
+Флаг -e (таблица степеней)
+
+$ ./prog1.out 1 -e
+→ Exponent  Base  Result
+→ 1  1  1
+→ 1  2  2
+→ 1  3  3
+→ ... до base = 10, result = 10
+
+$ ./prog1.out 3 -e
+→ Exponent  Base  Result
+→ 1  1  1
+→ 1  2  2
+→ ... 1  10  10
+→ 2  1  1
+→ 2  2  4
+→ ... 2  10  100
+→ 3  1  1
+→ ... 3  10  1000
+
+$ ./prog1.out 10 -e
+→ таблица со показателями от 1 до 10 и основаниями от 1 до 10
+→ последняя строка: 10  10  10000000000
+
+$ ./prog1.out 0 -e
+→ Error: number out of range for this flag
+
+$ ./prog1.out 11 -e
+→ Error: number out of range for this flag
+
+$ ./prog1.out -3 -e
+→ Error: number out of range for this flag
+
+Флаг -a (сумма 1..x)
+
+$ ./prog1.out 1 -a
+→ Sum 1 .. 1 = 1
+
+$ ./prog1.out 10 -a
+→ Sum 1 .. 10 = 55
+
+$ ./prog1.out 100 -a
+→ Sum 1 .. 100 = 5050
+
+$ ./prog1.out 1000 -a
+→ Sum 1 .. 1000 = 500500
+
+$ ./prog1.out 0 -a
+→ Error: number out of range for this flag
+
+$ ./prog1.out -5 -a
+→ Error: number out of range for this flag
+
+Флаг -f (факториал)
+
+$ ./prog1.out 0 -f
+→ 0! = 1
+
+$ ./prog1.out 1 -f
+→ 1! = 1
+
+$ ./prog1.out 5 -f
+→ 5! = 120
+
+$ ./prog1.out 20 -f
+→ 20! = 2432902008176640000
+
+$ ./prog1.out 21 -f
+→ Error: result overflow
+
+$ ./prog1.out -3 -f
+→ Error: number out of range for this flag
+
+ЗАДАНИЕ 2. Константы e, π, ln 2, √2, γ
+
+Эталонные значения:
+  e     ≈ 2.718281828459045
+  π     ≈ 3.141592653589793
+  ln 2  ≈ 0.693147180559945
+  √2    ≈ 1.414213562373095
+  γ     ≈ 0.577215664901533
+
+ЗАДАНИЕ 3. Флаги -q, -m, -t
+
+ Флаг -m (кратность) 
+
+$ ./prog3.out -m 10 5
+→ 10 is a multiple of 5
+
+$ ./prog3.out -m 10 3
+→ 10 is not a multiple of 3
+
+$ ./prog3.out -m -10 5
+→ -10 is a multiple of 5
+
+$ ./prog3.out -m 10 -5
+→ 10 is a multiple of -5
+
+$ ./prog3.out -m 7 7
+→ 7 is a multiple of 7
+
+$ ./prog3.out -m 0 5
+→ Error: number out of range for this flag
+
+$ ./prog3.out -m abc 5
+→ Warning: <a> should be integer
+
+$ ./prog3.out -m 10
+→ Usage: ./prog3.out -m <a> <b>
+
+ Флаг -t (прямоугольный треугольник) 
+
+$ ./prog3.out -t 1e-6 3 4 5
+→ right triangle
+
+$ ./prog3.out -t 1e-6 5 3 4
+→ right triangle
+
+$ ./prog3.out -t 1e-6 1 1 1
+→ not right triangle
+
+$ ./prog3.out -t 1e-6 1 2 3
+→ not right triangle
+
+$ ./prog3.out -t 1e-6 -3 4 5
+→ Error: number out of range for this flag
+
+Флаг -q (квадратное уравнение, все перестановки) 
+
+$ ./prog3.out -q 1e-6 1 -3 2
+→ шесть уникальных троек:
+   a = 1, b = -3, c = 2: x1 = 1, x2 = 2
+   a = 1, b = 2, c = -3: x1 = -3, x2 = 1
+   a = -3, b = 1, c = 2: x1 = -0.666667, x2 = 1
+   a = -3, b = 2, c = 1: x1 = -0.333333, x2 = 1
+   a = 2, b = 1, c = -3: x1 = -1.5, x2 = 1
+   a = 2, b = -3, c = 1: x1 = 0.5, x2 = 1
+
+$ ./prog3.out -q 1e-6 1 2 3
+→ 6 перестановок, у всех: "no real roots"
+
+$ ./prog3.out -q 1e-6 1 1 2
+   a = 1, b = 1, c = 2: no real roots
+   a = 1, b = 2, c = 1: x = -1
+   a = 2, b = 1, c = 1: no real roots
+
+$ ./prog3.out -q 1e-6 2 2 2
+   a = 2, b = 2, c = 2: no real roots
+
+ЗАДАНИЕ 4. Флаги -d, -i, -s, -a и -nd, -ni, -ns, -na
+
+ Флаг -d (удалить цифры) 
+
+$ ./prog4.out -d input1.txt
+→ создан файл out_input1.txt:
+  Hello World !
+  abc
+  !@#
+
+$ ./prog4.out -nd input1.txt result.txt
+→ создан файл result.txt (то же содержимое)
+
+ Флаг -i (количество латинских букв в строке) 
+
+$ ./prog4.out -i input1.txt
+→ out_input1.txt:
+  10    (Hello World — 10 букв)
+  3     (abc)
+  0     
+
+ Флаг -s (количество прочих символов) 
+
+$ ./prog4.out -s input1.txt
+→ out_input1.txt:
+  1     (!)
+  0     (abc)
+  3     (!@# — 3 символа)
+
+ Флаг -a (замена нецифровых на hex) 
+
+$ ./prog4.out -a input1.txt
+→ out_input1.txt:
+  48656C6C6F20576F726C6420123210D0A6162630D0A21402320456
+
+ЗАДАНИЕ 5. Суммы и интегралы
+
+$ ./prog5.out 1e-6 0.5
+→  5.1: sums 
+→ a) sum x^n/n!                        = 1.648721270700128    (= e^0.5)
+→ b) sum (-1)^n x^(2n)/(2n)!           = 0.877582561890373    (= cos 0.5)
+→ c) sum 3^(3n)(n!)^3 x^(2n)/(3n)!     ≈ 2.900487389          (сходится)
+→ d) sum (-1)^n (2n-1)!! x^(2n)/(2n)!! ≈ -0.1056729          (сходится)
+
+→  5.2: integrals 
+→ a) int_0^1 ln(1+x)/x dx              = 0.822467033424113    
+→ b) int_0^1 e^(-x^2/2) dx             = 0.855624391892149
+→ c) int_0^1 ln(1/(1-x)) dx            = 1.000000000000000
+→ d) int_0^1 x^x dx                    = 0.783430510712134
+
+ЗАДАНИЕ 8. Определение основания числа
+
+$ ./prog8.out in.txt out.txt
+→ out.txt:
+  123     4     27
+  abc     13    1845
+  ZZZ     36    46655
+  ff      16    255
+  1010    2     10
+  0       2     0
+
+$ ./prog8.out in2.txt out.txt
+→ out.txt:
+  A       11    10
+  z       36    35
+  0       2     0 
+
+ЗАДАНИЕ 10. Сумма и max по модулю в разных системах
+
+Тест 1: base 16
+
+$ ./prog10.out
+→ Enter base (2..36): 16
+→ Enter numbers in base 16, "Stop" to finish:
+→ FF
+→ 7A
+→ 1A
+→ Stop
+→
+→ Maximum by absolute value
+→ base 10: 255
+→ base  9: 313
+→ base 18: E3
+→ base 27: 9C
+→ base 36: 73
+→
+→ Sum
+→ base 10: 403
+→ base  9: 487
+→ base 18: 147
+→ base 27: EP
+→ base 36: B7
+
+Проверка:
+  FF_16 = 255, 7A_16 = 122, 1A_16 = 26.
+  max = 255, sum = 403.
+  255_10 = 313_9 = E3_18 = 9C_27 = 73_36.
+  403_10 = 487_9 = 147_18 = EP_27 = B7_36.
+
+Тест 2: base 2
+
+→ Enter base (2..36): 2
+→ 101
+→ 110
+→ Stop
+→
+→ Maximum
+→ base 10: 6
+→ base  9: 6
+→ base 18: 6
+→ base 27: 6
+→ base 36: 6
+→
+→ Sum
+→ base 10: 11
+→ base  9: 12
+→ base 18: B
+→ base 27: B
+→ base 36: B
+
+Тест 3: base 36, регистр
+
+→ Enter base (2..36): 36
+→ Z
+→ 10
+→ Stop
+→
+→ max = 35 (Z_36)
+→ sum = 35 + 36 = 71
+
+Тест 4: отрицательные числа, base 10
+
+→ Enter base (2..36): 10
+→ -5
+→ 3
+→ Stop
+→
+→ max по модулю = -5
+→ sum = -2
+
+Тест 5: невалидный символ (для base 16)
+
+→ Enter base (2..36): 16
+→ XYZ
+→ 1F
+→ Stop
+→ Warning: 'XYZ' is not a valid number in base 16
+→ max = 31 (1F_16)
+→ sum = 31
+
+Тест 6: переполнение
+
+→ Enter base (2..36): 36
+→ ZZZZZZZZZZZZZZ
+→ Stop
+→ Warning: 'ZZZZZZZZZZZZZZ' overflows long long, skipped
+→ No numbers entered
